@@ -1,0 +1,31 @@
+.main-header {
+    background-color: #3498db;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    border-bottom: 4px solid #2980b9;
+}
+
+.main-header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.main-header nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.main-header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.main-header nav a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,66 @@
+.detalle-container {
+    display: flex;
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    flex-wrap: wrap;
+}
+
+.detalle-img {
+    width: 300px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.detalle-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.detalle-title {
+    font-size: 1.8rem;
+    margin: 0;
+    color: #2c3e50;
+}
+
+.detalle-description {
+    color: #7f8c8d;
+    font-size: 1rem;
+}
+
+.detalle-category {
+    background-color: #ecf0f1;
+    padding: 6px 12px;
+    border-radius: 6px;
+    width: fit-content;
+    font-size: 0.9rem;
+}
+
+.detalle-price {
+    font-size: 1.6rem;
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.detalle-rating {
+    font-size: 1rem;
+    color: #f39c12;
+}
+
+.error{
+    flex-direction: column;
+
+}
+
+.error a {
+    text-decoration: none;
+}
