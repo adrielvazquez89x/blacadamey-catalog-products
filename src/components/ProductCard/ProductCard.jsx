@@ -1,21 +1,15 @@
 import { useNavigate } from 'react-router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './ProductCard.css';
 
 
-export default function ProductCard({ producto, favoriteProducts, setFavoriteProducts }) {
+export default function ProductCard({ producto, addToFavorite, removeFromFavorite, isFaved }) {
 
     const navigate = useNavigate();
     const [selected, setSelected] = useState(false);
 
-    const [favorite, setFavorite] = useState(false);
-
     //Este useEffect es para el render del corazon
-    useEffect(() => {
-        if(favoriteProducts.some(fp => fp.id === producto.id)) {
-            setFavorite(true);
-        }
-    }, [favoriteProducts, producto]);
+    const favorite = isFaved(producto);
 
     //Esto es para ir al detalle
     const handleSelected = () => {
@@ -23,26 +17,11 @@ export default function ProductCard({ producto, favoriteProducts, setFavoritePro
         navigate(`/products/${producto.id}`);
     }
 
-    const handleSetFavorite = () => {
-        setFavorite(!favorite);
-
-        const exists = favoriteProducts.some(fp => fp.id === producto.id);
-        console.log("HandleSetFavorite: ", exists);
-
-        let updatedFavorites = [...favoriteProducts];
-
-        if (!exists) {
-            console.log("Se agregó correctamente.");
-            updatedFavorites.push(producto);
-            localStorage.setItem("favoriteProducts", JSON.stringify(updatedFavorites));
-            setFavoriteProducts(updatedFavorites);
-        }
-        else {
-            console.log("Se eliminó correctamente.");
-            updatedFavorites = updatedFavorites.filter(fp => fp.id !== producto.id);
-            localStorage.setItem("favoriteProducts", JSON.stringify(updatedFavorites));
-            setFavoriteProducts(updatedFavorites);
-        }
+    const markFavorite = () => {
+        addToFavorite(producto);
+    }
+    const unmarkFavorite = () => {
+        removeFromFavorite(producto);
     }
 
 
@@ -55,7 +34,7 @@ export default function ProductCard({ producto, favoriteProducts, setFavoritePro
                 <div>
                     <label
                         className='add-favs'
-                        onClick={handleSetFavorite}
+                        onClick={favorite ? unmarkFavorite : markFavorite}
                     >{favorite ? "❤️" : "🤍"}</label>
                 </div>
                 <button
